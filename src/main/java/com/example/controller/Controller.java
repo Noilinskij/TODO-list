@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/tasks")
 public class Controller {
@@ -28,11 +30,13 @@ public class Controller {
 
     @GetMapping("/{id}")
     public ResponseEntity<TaskResponse> getTask(@PathVariable Long id) {
-        try {
-            TaskResponse response = taskService.getTask(id);
-            return ResponseEntity.status(HttpStatus.OK).body(response);
-        } catch(NotFoundException exception) {
-            throw exception;
-        }
+        TaskResponse response = taskService.getTask(id);
+        return ResponseEntity.status(HttpStatus.OK).body(response);
+
+    }
+    @GetMapping
+    public ResponseEntity<List<TaskResponse>> getTaskAll() {
+        List<TaskResponse> tasks = taskService.getTaskAll();
+        return ResponseEntity.status(HttpStatus.OK).body(tasks);
     }
 }

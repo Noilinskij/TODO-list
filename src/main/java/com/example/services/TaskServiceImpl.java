@@ -8,6 +8,8 @@ import com.example.repository.TaskRepository;
 import org.springframework.stereotype.Service;
 import com.example.mapper.Taskmapper;
 
+import java.util.List;
+
 @Service
 public class TaskServiceImpl implements TaskService {
     private final TaskRepository taskRepository;
@@ -30,6 +32,11 @@ public class TaskServiceImpl implements TaskService {
         TaskEntity taskEntity = taskRepository.findById(id).
                 orElseThrow(() -> new NotFoundException("Task по id: " + id + " не существует"));
         return taskmapper.entityToDto(taskEntity);
+    }
+
+    public List<TaskResponse> getTaskAll() {
+        List<TaskEntity> tasks = taskRepository.findAll();
+        return tasks.stream().map(taskmapper::entityToDto).toList();
     }
 
 
