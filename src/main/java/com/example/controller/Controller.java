@@ -2,6 +2,7 @@ package com.example.controller;
 
 import com.example.exception.NotFoundException;
 import com.example.model.dto.PostTask;
+import com.example.model.dto.UpdateTask;
 import com.example.services.TaskService;
 import com.example.model.dto.TaskResponse;
 import org.springframework.http.HttpStatus;
@@ -34,9 +35,18 @@ public class Controller {
         return ResponseEntity.status(HttpStatus.OK).body(response);
 
     }
+
     @GetMapping
     public ResponseEntity<List<TaskResponse>> getTaskAll() {
         List<TaskResponse> tasks = taskService.getTaskAll();
         return ResponseEntity.status(HttpStatus.OK).body(tasks);
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<TaskResponse> updateTask(@PathVariable Long id,
+                                                   @RequestBody UpdateTask request) {
+        TaskResponse response = taskService.updateTask(id, request);
+        return ResponseEntity.status(HttpStatus.OK).body(response);
+
     }
 }

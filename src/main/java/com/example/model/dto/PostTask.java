@@ -10,6 +10,6 @@ public record PostTask(
         @NotBlank(message = "Введи описание")
         String description,
         @NotNull(message = "Введи статус")
-        boolean completed
+        Boolean completed
 
 ) {}
