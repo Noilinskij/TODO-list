@@ -14,10 +14,13 @@ import com.example.services.TaskService;
 @RestController
 @RequestMapping("/tasks")
 public class Controller {
+
     private final TaskService taskService;
+
     Controller(TaskService taskService) {
         this.taskService = taskService;
     }
+
     @PostMapping
     public ResponseEntity<PostTaskResponse> createTask(@Validated @RequestBody PostTask request) {
         PostTaskResponse response = taskService.createTask(request);
