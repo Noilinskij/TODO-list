@@ -1,7 +1,7 @@
 package com.example.mapper;
 
 import com.example.model.dto.PostTask;
-import com.example.model.dto.PostTaskResponse;
+import com.example.model.dto.TaskResponse;
 import com.example.model.entity.TaskEntity;
 import org.springframework.stereotype.Component;
 
@@ -15,8 +15,8 @@ public class Taskmapper {
         return taskEntity;
     }
 
-    public PostTaskResponse entityToDto(TaskEntity taskEntity) {
-        return new PostTaskResponse(taskEntity.getId(), taskEntity.getTitle(),
+    public TaskResponse entityToDto(TaskEntity taskEntity) {
+        return new TaskResponse(taskEntity.getId(), taskEntity.getTitle(),
                 taskEntity.getDescription(), taskEntity.getCompleted());
 
     }

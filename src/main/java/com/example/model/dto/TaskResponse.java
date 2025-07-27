@@ -1,6 +1,6 @@
 package com.example.model.dto;
 
-public record PostTaskResponse (
+public record TaskResponse(
     Long id,
     String title,
     String description,
