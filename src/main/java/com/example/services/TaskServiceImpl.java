@@ -59,5 +59,13 @@ public class TaskServiceImpl implements TaskService {
 
     }
 
+    @Transactional
+    public void deleteTask(Long id) {
+        TaskEntity taskEntity = taskRepository.findById(id).
+                orElseThrow(() -> new NotFoundException("Task по id: " + id + " не существует"));
+        taskRepository.delete(taskEntity);
+
+    }
+
 
 }

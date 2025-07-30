@@ -1,6 +1,5 @@
 package com.example.controller;
 
-import com.example.exception.NotFoundException;
 import com.example.model.dto.PostTask;
 import com.example.model.dto.UpdateTask;
 import com.example.services.TaskService;
@@ -47,6 +46,13 @@ public class Controller {
                                                    @RequestBody UpdateTask request) {
         TaskResponse response = taskService.updateTask(id, request);
         return ResponseEntity.status(HttpStatus.OK).body(response);
+
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteTask(@PathVariable Long id) {
+        taskService.deleteTask(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
 
     }
 }

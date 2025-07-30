@@ -11,4 +11,5 @@ public interface TaskService {
     public TaskResponse getTask(Long id);
     public List<TaskResponse> getTaskAll();
     public TaskResponse updateTask(Long id, UpdateTask request);
+    public void deleteTask(Long id);
 }
