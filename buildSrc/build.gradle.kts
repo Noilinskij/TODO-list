@@ -1,18 +1,24 @@
-repositories {
-    gradlePluginPortal()
-    mavenCentral()
-}
-
 plugins {
-    id("java-gradle-plugin")
-    alias(libs.plugins.java)
+    `java-gradle-plugin`
     alias(libs.plugins.springframework.boot)
     alias(libs.plugins.spring.dependency)
+}
+
+repositories {
+    mavenCentral()
+    gradlePluginPortal()
 }
 
 dependencies {
     implementation(gradleApi())
     implementation(libs.bundles.spring.libraries)
-    implementation("org.springframework.boot:spring-boot-gradle-plugin:3.2.5")
-    implementation("io.spring.gradle:dependency-management-plugin:1.1.4")
+}
+
+gradlePlugin{
+    plugins {
+        register("MyPlugin") {
+            id = "plugins.myplugin"
+            implementationClass = "plugins.MyPlugin"
+        }
+    }
 }

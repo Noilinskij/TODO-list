@@ -2,6 +2,10 @@ group = "com.example.taskservice"
 version = "1.0.0"
 
 plugins {
-    id("MyPlugin")
+    `MyPlugin`
 
+}
+
+dependencies {
+    runtimeOnly("com.h2database:h2")
 }
